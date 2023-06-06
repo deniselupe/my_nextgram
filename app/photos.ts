@@ -1,4 +1,17 @@
-const photos = [
+import { z } from 'zod';
+
+const PhotoSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  href: z.string().url(),
+  username: z.string(),
+  imageSrc: z.string().url()
+});
+
+export type PhotoType = z.infer<typeof PhotoSchema>;
+export type PhotosType = PhotoType[];
+
+const photos: PhotosType = [
     {
       id: '1',
       name: 'Kevin Canlas',
